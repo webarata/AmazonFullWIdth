@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "全角Amazon",
+  "description": "Amazonの商品名やISBNを全角にするツールです",
+  "version": "0.2.3",
+  "permissions":["clipboardRead"],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "icons": {
+    "128": "icon_128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://www.amazon.co.jp/*"],
+      "js": ["jquery-2.1.1.min.js", "kana.js"]
+    }
+  ]
+}
