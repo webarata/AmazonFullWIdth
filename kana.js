@@ -39,10 +39,10 @@ var halfWidthToFullWidth = function(str) {
     return String.fromCharCode(s.charCodeAt(0) + 0xFEE0);
   });
   for (var i = 0; i < REPLACE_ARRAY.length; i++) {
-    tempStr = tempStr.split(REPLACE_ARRAY[i][0]).join(REPLACE_ARRAY[i][1]);  
+    tempStr = tempStr.split(REPLACE_ARRAY[i][0]).join(REPLACE_ARRAY[i][1]);
   }
   return tempStr;
-}
+};
 
 
 var setButton = function($el, idName, text) {
@@ -52,7 +52,7 @@ var setButton = function($el, idName, text) {
       text: halfWidthToFullWidth(text)
     });
   });
-}
+};
 
 var initTitle = function() {
   var $el = $('#btAsinTitle');
