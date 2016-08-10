@@ -44,54 +44,58 @@ var halfWidthToFullWidth = function(str) {
   return tempStr;
 };
 
+var addConvertButton = function($el, buttonId, convertText) {
+  var $button = document.createElement("button");
+  $button.id = buttonId;
+  $button.type = 'button';
+  $button.innerText = '全角にしてコピー';
+  $el.appendChild($button);
 
-var setButton = function($el, idName, text) {
-  $el.append('<input type="button" id="' + idName + '" value="全角にしてコピー">');
-  $('#' + idName).on('click', function() {
+  $button.addEventListener('click', function() {
     chrome.runtime.sendMessage({
-      text: halfWidthToFullWidth(text)
+      text: halfWidthToFullWidth(convertText)
     });
   });
 };
 
-var initTitle = function() {
-  var $el = $('#btAsinTitle');
-  if ($el.size() == 1) {
-    var t = $el.text();
-    setButton($el, 'copyTitle', t);
-  }
+var addConvertButtonById = function(selector, buttonId) {
+  var $el = document.querySelector(selector);
+  if (!$el) return;
+
+  addConvertButton($el, buttonId, $el.innerText);
 };
 
-var initProductTitle = function() {
-  var $el = $('#productTitle');
-  if ($el.size() == 1) {
-    var t = $el.text();
-    setButton($el, 'copyProductTitle', t);
-  }
+var addConvertButtonByLabel = function(searchString, buttonId) {
+  var $labelList = document.getElementsByClassName('label');
+  if (!$labelList) return;
+  Array.prototype.forEach.call($labelList, function($label) {
+    if ($label.innerText == searchString) {
+      addConvertButton($label.nextElementSibling, buttonId, $label.nextElementSibling.innerText);
+      return;
+    }
+  });
 };
 
-var initB = function(content, idName) {
-  var $el = $('b:contains("' + content + '")');
-  if ($el.size() == 1) {
-    var t = $el.parent().text().substr(content.length + 1);
-    setButton($el.parent(), idName, t);
-  }
+var addConvertButtonByB = function(searchString, buttonId) {
+  var $bList = document.getElementsByTagName('b');
+  if (!$bList) return;
+  Array.prototype.forEach.call($bList, function($b) {
+    if ($b.innerText == searchString) {
+      console.log($b.nextSibling);
+      addConvertButton($b, buttonId, $b.parentElement.innerText.substr(8));
+      return;
+    }
+  });
 };
 
-var initTr = function(className, idName) {
-  var $el = $('.' + className);
-  if ($el.size() == 1) {
-    var t = $el.find('.value').text();
-    setButton($el.find('.value'), idName, t);
-  }
-};
+addConvertButtonById('#btAsinTitle', 'copyTitle');
+addConvertButtonById('#productTitle', 'oopyTitle');
 
-initTitle();
-initProductTitle();
+addConvertButtonByLabel('メーカー型番', 'maker');
+addConvertButtonByLabel('ASIN', 'asin');
+addConvertButtonByLabel('ISBN-10', 'isbn10');
+addConvertButtonByLabel('ISBN-13', 'isbn13');
 
-initB('メーカー型番：', 'maker');
-initB('ASIN:', 'asin');
-initB('ISBN-10:', 'isbn10');
-initB('ISBN-13:', 'isbn13');
-
-initTr('item-model-number', 'itemModelNumber');
+addConvertButtonByB('ASIN:', 'asin');
+addConvertButtonByB('ISBN-10:', 'isbn10');
+addConvertButtonByB('ISBN-13:', 'isbn13');
