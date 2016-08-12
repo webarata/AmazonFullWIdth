@@ -72,9 +72,10 @@ const addConvertButtonById = (selector, buttonId) => {
 const addConvertButtonByLabel = (searchString, buttonId) => {
   const $labelList = document.getElementsByClassName('label');
   if (!$labelList) return;
-  Array.prototype.forEach.call($labelList, ($label) => {
+  Array.prototype.some.call($labelList, ($label) => {
     if ($label.innerText == searchString) {
       addConvertButton($label.nextElementSibling, buttonId, $label.nextElementSibling.innerText);
+      return true;
     }
   });
 };
@@ -82,9 +83,10 @@ const addConvertButtonByLabel = (searchString, buttonId) => {
 const addConvertButtonByB = (searchString, buttonId) => {
   const $bList = document.getElementsByTagName('b');
   if (!$bList) return;
-  Array.prototype.forEach.call($bList, function($b) {
+  Array.prototype.some.call($bList, function($b) {
     if ($b.innerText == searchString) {
       addConvertButton($b, buttonId, $b.parentElement.innerText.substr(8));
+      return true;
     }
   });
 };
