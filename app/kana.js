@@ -51,6 +51,8 @@ const addConvertButton = ($el, buttonId, convertText) => {
   $button.id = buttonId;
   $button.type = 'button';
   $button.innerText = '全角にしてコピー';
+  $button.style.fontSize = '0.5em';
+  $button.style.borderRadius = '5px';
   $el.appendChild($button);
 
   $button.addEventListener('click', () => {
