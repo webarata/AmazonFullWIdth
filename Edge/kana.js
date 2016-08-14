@@ -56,9 +56,17 @@ const addConvertButton = ($el, buttonId, convertText) => {
   $el.appendChild($button);
 
   $button.addEventListener('click', () => {
-    chrome.runtime.sendMessage({
-      text: halfWidthToFullWidth(convertText)
-    });
+    const textArea = document.createElement('textarea');
+    textArea.style.cssText = 'position: absolute; left: -100%';
+
+    document.body.appendChild(textArea);
+
+    textArea.value = halfWidthToFullWidth(convertText.trim());
+    textArea.select();
+
+    document.execCommand('copy');
+
+    document.body.removeChild(textArea);
   });
 };
 
