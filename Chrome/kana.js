@@ -74,10 +74,11 @@ function addConvertButton($el, getTextFunc) {
   const text = getTextFunc($el);
 
   const $button = document.createElement('button');
+  $button.className = 'zenkakuButton';
   $button.type = 'button';
-  $button.innerText = '全角にしてコピー';
-  $button.style.fontSize = '0.5em';
-  $button.style.borderRadius = '5px';
+  $button.innerText = ' ';
+  // $button.style.fontSize = '0.5em';
+  // $button.style.borderRadius = '5px';
 
   $el.appendChild($button);
 
@@ -116,11 +117,11 @@ function searchElByB(searchString) {
 }
 
 function getText($el) {
-    return $el.innerText;
+  return $el.innerText;
 }
 
 function getTextByB($el) {
-    return $el.parentElement.innerText.substr(8);
+  return $el.parentElement.innerText.substr(8);
 }
 
 addConvertButton(searchElById('#btAsinTitle'), getText);
@@ -134,3 +135,48 @@ addConvertButton(searchElByLabel('ISBN-13'), getText);
 addConvertButton(searchElByB('ASIN:'), getTextByB);
 addConvertButton(searchElByB('ISBN-10:'), getTextByB);
 addConvertButton(searchElByB('ISBN-13:'), getTextByB);
+
+const $head = document.getElementsByTagName('head')[0];
+console.log($head);
+const $style = document.createElement('style');
+$style.innerText = `
+.zenkakuButton {
+  background-color: #2cc55e;
+  border: 2px solid #2cc55e;
+  border-radius: 0.8em;
+  color: #fff;
+  font-size: 0.7em;
+  margin: 0 0 0 0.5em;
+  outline: none;
+  width: 10em;
+}
+
+.zenkakuButton:before {
+  content: "全角にする"
+}
+
+.zenkakuButton:hover {
+  background-color: #24b662;
+  transition: background-color 0.3s linear;
+}
+
+.zenkakuButton:hover:before {
+  content: "コピー"
+}
+
+.zenkakuButton:active {
+  background-color: #24b662;
+  color: #07853c;
+  border: 2px solid #17954c ;
+  transition: color 0.3s linear;
+  transition: background-color 0.3s linear;
+}
+
+.zenkakuButton:active:before {
+  content: "コピーしました";
+}
+`;
+
+console.log($style);
+
+$head.appendChild($style);
