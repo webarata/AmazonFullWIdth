@@ -3,7 +3,7 @@
   "name": "全角Amazon",
   "author": "Shinichi ARATA",
   "description": "Amazonの商品名やISBNを全角にするツールです",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "permissions":["clipboardRead"],
   "icons": {
     "16": "image/icon16.png",
