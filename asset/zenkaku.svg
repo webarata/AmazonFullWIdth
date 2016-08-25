@@ -16,9 +16,9 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="zenkaku.svg"
-   inkscape:export-filename="/Users/arata/Desktop/zenkaku.png"
-   inkscape:export-xdpi="15.85"
-   inkscape:export-ydpi="15.85">
+   inkscape:export-filename="/Users/arata/Desktop/icon19.png"
+   inkscape:export-xdpi="5.8899999"
+   inkscape:export-ydpi="5.8899999">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -29,10 +29,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="401.7618"
+     inkscape:cx="239.2618"
      inkscape:cy="156.59998"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      showgrid="false"
      inkscape:window-width="1680"
      inkscape:window-height="1001"
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -85,13 +85,14 @@
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:126.48958588px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#252525;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="84.845482"
-       y="681.76874"
+       y="683.17419"
        id="text3340"
        sodipodi:linespacing="125%"
        transform="scale(0.70271985,1.4230422)"><tspan
          sodipodi:role="line"
          id="tspan3342"
          x="84.845482"
-         y="681.76874">全角</tspan></text>
+         y="683.17419"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Hiragino Maru Gothic ProN';-inkscape-font-specification:'Hiragino Maru Gothic ProN'">全角</tspan></text>
   </g>
 </svg>
